@@ -18,11 +18,17 @@ namespace GildedTros.App
                     && Items[i].Name != "Backstage passes for Re:factor"
                     && Items[i].Name != "Backstage passes for HAXX")
                 {
-                    if (Items[i].Quality > 0)
+                    if (Items[i].Name != "B-DAWG Keychain")
                     {
-                        if (Items[i].Name != "B-DAWG Keychain")
+                        if (Items[i].Name == "Duplicate Code" ||
+                            Items[i].Name == "Long Methods" ||
+                            Items[i].Name == "Ugly Variable Names")
                         {
-                            Items[i].Quality = Items[i].Quality - 1;
+                            Items[i].Quality = System.Math.Max(0, Items[i].Quality - 2);
+                        }
+                        else
+                        {
+                            Items[i].Quality = System.Math.Max(0, Items[i].Quality - 1);
                         }
                     }
                 }
@@ -66,13 +72,20 @@ namespace GildedTros.App
                         if (Items[i].Name != "Backstage passes for Re:factor"
                             && Items[i].Name != "Backstage passes for HAXX")
                         {
-                            if (Items[i].Quality > 0)
+                            if (Items[i].Name != "B-DAWG Keychain")
                             {
-                                if (Items[i].Name != "B-DAWG Keychain")
+                                if (Items[i].Name == "Duplicate Code" ||
+                                    Items[i].Name == "Long Methods" ||
+                                    Items[i].Name == "Ugly Variable Names")
                                 {
-                                    Items[i].Quality = Items[i].Quality - 1;
+                                    Items[i].Quality = System.Math.Max(0, Items[i].Quality - 2);
+                                }
+                                else
+                                {
+                                    Items[i].Quality = System.Math.Max(0, Items[i].Quality - 1);
                                 }
                             }
+                            
                         }
                         else
                         {
