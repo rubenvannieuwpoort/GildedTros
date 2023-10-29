@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.Design;
-
-namespace GildedTros.App
+﻿namespace GildedTros.App
 {
     internal static class ItemNames
     {
