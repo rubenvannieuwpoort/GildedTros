@@ -22,7 +22,7 @@ namespace GildedTros.App
                 //new Item {Name = "Ugly Variable Names", SellIn = 3, Quality = 6}
             };
 
-            var app = new GildedTros(Items);
+            var inventory = new Inventory(Items);
 
 
             for (var i = 0; i < 31; i++)
@@ -34,7 +34,7 @@ namespace GildedTros.App
                     System.Console.WriteLine(Items[j].Name + ", " + Items[j].SellIn + ", " + Items[j].Quality);
                 }
                 Console.WriteLine("");
-                app.UpdateQuality();
+                inventory.UpdateQuality();
             }
         }
     }
