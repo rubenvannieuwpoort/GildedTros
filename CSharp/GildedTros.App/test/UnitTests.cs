@@ -70,5 +70,75 @@ namespace GildedTros.App
                 new Item { Name = "Good Wine", SellIn = -1, Quality = 12 }
             );
         }
+
+        [Fact]
+        public void QualityOfBackstagePassesShouldBecomeZeroAfterSellDate()
+        {
+            TestBeforeAfter(
+                new Item { Name = "Backstage passes for Re:factor", SellIn = 0, Quality = 10 },
+                new Item { Name = "Backstage passes for Re:factor", SellIn = -1, Quality = 0 }
+            );
+
+            TestBeforeAfter(
+                new Item { Name = "Backstage passes for HAXX", SellIn = 0, Quality = 10 },
+                new Item { Name = "Backstage passes for HAXX", SellIn = -1, Quality = 0 }
+            );
+        }
+
+        [Fact]
+        public void QualityOfBackstagePassesShouldIncreaseByThreeWhenThereAre5DaysOrLessLeft()
+        {
+            TestBeforeAfter(
+                new Item { Name = "Backstage passes for Re:factor", SellIn = 5, Quality = 0 },
+                new Item { Name = "Backstage passes for Re:factor", SellIn = 4, Quality = 3 }
+            );
+
+            TestBeforeAfter(
+                new Item { Name = "Backstage passes for HAXX", SellIn = 5, Quality = 0 },
+                new Item { Name = "Backstage passes for HAXX", SellIn = 4, Quality = 3 }
+            );
+        }
+
+        [Fact]
+        public void QualityOfBackstagePassesShouldIncreaseByThreeWhenThereAreMoreThan5ButLessThen11DaysLeft()
+        {
+            TestBeforeAfter(
+                new Item { Name = "Backstage passes for Re:factor", SellIn = 10, Quality = 0 },
+                new Item { Name = "Backstage passes for Re:factor", SellIn = 9, Quality = 2 }
+            );
+
+            TestBeforeAfter(
+                new Item { Name = "Backstage passes for HAXX", SellIn = 10, Quality = 0 },
+                new Item { Name = "Backstage passes for HAXX", SellIn = 9, Quality = 2 }
+            );
+        }
+
+        [Fact]
+        public void QualityOfBackstagePassesShouldIncreaseByOneWhenThereAreMoreThan10DaysLeft()
+        {
+            TestBeforeAfter(
+                new Item { Name = "Backstage passes for Re:factor", SellIn = 11, Quality = 0 },
+                new Item { Name = "Backstage passes for Re:factor", SellIn = 10, Quality = 1 }
+            );
+
+            TestBeforeAfter(
+                new Item { Name = "Backstage passes for HAXX", SellIn = 11, Quality = 0 },
+                new Item { Name = "Backstage passes for HAXX", SellIn = 10, Quality = 1 }
+            );
+        }
+
+        [Fact]
+        public void QualityOfBackstagePassesShouldNotBecomeMoreThan50()
+        {
+            TestBeforeAfter(
+                new Item { Name = "Backstage passes for Re:factor", SellIn = 5, Quality = 49 },
+                new Item { Name = "Backstage passes for Re:factor", SellIn = 4, Quality = 50 }
+            );
+
+            TestBeforeAfter(
+                new Item { Name = "Backstage passes for HAXX", SellIn = 5, Quality = 49 },
+                new Item { Name = "Backstage passes for HAXX", SellIn = 4, Quality = 50 }
+            );
+        }
     }
 }
