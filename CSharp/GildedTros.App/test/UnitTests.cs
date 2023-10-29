@@ -3,7 +3,7 @@ using Xunit;
 
 namespace GildedTros.App
 {
-    public class GildedTrosTest
+    public class UnitTests
     {
         [Fact]
         public void foo()
