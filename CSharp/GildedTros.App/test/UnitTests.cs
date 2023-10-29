@@ -10,7 +10,7 @@ namespace GildedTros.App
             List<Item> items = new List<Item> { before };
             Inventory inventory = new Inventory(items);
 
-            inventory.UpdateQuality();
+            inventory.Update();
 
             Assert.Equal(after.Name, items[0].Name);
             Assert.Equal(after.SellIn, items[0].SellIn);

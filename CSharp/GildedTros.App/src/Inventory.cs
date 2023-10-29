@@ -10,7 +10,7 @@ namespace GildedTros.App
             this.Items = Items;
         }
 
-        public void UpdateQuality()
+        public void Update()
         {
             for (var i = 0; i < Items.Count; i++)
             {
