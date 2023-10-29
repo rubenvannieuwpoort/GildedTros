@@ -7,8 +7,6 @@ namespace GildedTros.App
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("OMGHAI!");
-
             IList<Item> Items = new List<Item>{
                 new Item {Name = "Ring of Cleansening Code", SellIn = 10, Quality = 20},
                 new Item {Name = "Good Wine", SellIn = 2, Quality = 0},

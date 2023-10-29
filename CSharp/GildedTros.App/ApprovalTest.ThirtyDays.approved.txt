@@ -1,5 +1,4 @@
-﻿OMGHAI!
--------- day 0 --------
+﻿-------- day 0 --------
 name, sellIn, quality
 Ring of Cleansening Code, 10, 20
 Good Wine, 2, 0
