@@ -140,5 +140,62 @@ namespace GildedTros.App
                 new Item { Name = "Backstage passes for HAXX", SellIn = 4, Quality = 50 }
             );
         }
+
+        [Fact]
+        public void QualityOfCodeSmellsShouldDecreaseByTwoBeforeSellDate()
+        {
+            TestBeforeAfter(
+                new Item { Name = "Duplicate Code", SellIn = 5, Quality = 10 },
+                new Item { Name = "Duplicate Code", SellIn = 4, Quality = 8 }
+            );
+
+            TestBeforeAfter(
+                new Item { Name = "Long Methods", SellIn = 5, Quality = 10 },
+                new Item { Name = "Long Methods", SellIn = 4, Quality = 8 }
+            );
+
+            TestBeforeAfter(
+                new Item { Name = "Ugly Variable Names", SellIn = 5, Quality = 10 },
+                new Item { Name = "Ugly Variable Names", SellIn = 4, Quality = 8 }
+            );
+        }
+
+        [Fact]
+        public void QualityOfCodeSmellsShouldDecreaseByFourAfterSellDate()
+        {
+            TestBeforeAfter(
+                new Item { Name = "Duplicate Code", SellIn = 0, Quality = 10 },
+                new Item { Name = "Duplicate Code", SellIn = -1, Quality = 6 }
+            );
+
+            TestBeforeAfter(
+                new Item { Name = "Long Methods", SellIn = 0, Quality = 10 },
+                new Item { Name = "Long Methods", SellIn = -1, Quality = 6 }
+            );
+
+            TestBeforeAfter(
+                new Item { Name = "Ugly Variable Names", SellIn = 0, Quality = 10 },
+                new Item { Name = "Ugly Variable Names", SellIn = -1, Quality = 6 }
+            );
+        }
+
+        [Fact]
+        public void QualityOfCodeSmellsShouldNotBecomeNegative()
+        {
+            TestBeforeAfter(
+                new Item { Name = "Duplicate Code", SellIn = 0, Quality = 3 },
+                new Item { Name = "Duplicate Code", SellIn = -1, Quality = 0 }
+            );
+
+            TestBeforeAfter(
+                new Item { Name = "Long Methods", SellIn = 0, Quality = 3 },
+                new Item { Name = "Long Methods", SellIn = -1, Quality = 0 }
+            );
+
+            TestBeforeAfter(
+                new Item { Name = "Ugly Variable Names", SellIn = 0, Quality = 3 },
+                new Item { Name = "Ugly Variable Names", SellIn = -1, Quality = 0 }
+            );
+        }
     }
 }
