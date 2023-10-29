@@ -16,10 +16,9 @@ namespace GildedTros.App
                 new Item {Name = "Backstage passes for Re:factor", SellIn = 15, Quality = 20},
                 new Item {Name = "Backstage passes for Re:factor", SellIn = 10, Quality = 49},
                 new Item {Name = "Backstage passes for HAXX", SellIn = 5, Quality = 49},
-                // TODO: implement "smelly items"
-                //new Item {Name = "Duplicate Code", SellIn = 3, Quality = 6},
-                //new Item {Name = "Long Methods", SellIn = 3, Quality = 6},
-                //new Item {Name = "Ugly Variable Names", SellIn = 3, Quality = 6}
+                new Item {Name = "Duplicate Code", SellIn = 3, Quality = 7},
+                new Item {Name = "Long Methods", SellIn = 3, Quality = 6},
+                new Item {Name = "Ugly Variable Names", SellIn = 3, Quality = 5}
             };
 
             var inventory = new Inventory(Items);
