@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Xunit;
 
 namespace GildedTros.App
@@ -41,6 +41,15 @@ namespace GildedTros.App
             TestBeforeAfter(
                 new Item { Name = "foo", SellIn = 0, Quality = 0 },
                 new Item { Name = "foo", SellIn = -1, Quality = 0 }
+            );
+        }
+
+        [Fact]
+        public void QualityAndSellInOfLegendaryItemsShouldNotChange()
+        {
+            TestBeforeAfter(
+                new Item { Name = "B-DAWG Keychain", SellIn = 10, Quality = 80 },
+                new Item { Name = "B-DAWG Keychain", SellIn = 10, Quality = 80 }
             );
         }
     }
