@@ -2,6 +2,17 @@
 
 namespace GildedTros.App
 {
+    internal static class ItemNames
+    {
+        internal const string GoodWine = "Good Wine";
+        internal const string BackstagePassesForHaxx = "Backstage passes for HAXX";
+        internal const string BackstagePassesForRefactor = "Backstage passes for Re:factor";
+        internal const string DuplicateCode = "Duplicate Code";
+        internal const string LongMethods = "Long Methods";
+        internal const string UglyVariableNames = "Ugly Variable Names";
+        internal const string BDawgKeychain = "B-DAWG Keychain";
+    }
+
     internal static class ItemExtensions
     {
         const int MinQuality = 0, MaxQuality = 50;
@@ -11,19 +22,19 @@ namespace GildedTros.App
             // update quality
             switch (item.Name)
             {
-                case "Good Wine":
+                case ItemNames.GoodWine:
                     UpdateQualityForGoodWine(ref item);
                     break;
-                case "Backstage passes for HAXX":
-                case "Backstage passes for Re:factor":
+                case ItemNames.BackstagePassesForHaxx:
+                case ItemNames.BackstagePassesForRefactor:
                     UpdateQualityForBackstagePasses(ref item);
                     break;
-                case "Duplicate Code":
-                case "Long Methods":
-                case "Ugly Variable Names":
+                case ItemNames.DuplicateCode:
+                case ItemNames.LongMethods:
+                case ItemNames.UglyVariableNames:
                     UpdateQualityForSmellyItems(ref item);
                     break;
-                case "B-DAWG Keychain":
+                case ItemNames.BDawgKeychain:
                     // legendary items always keep their quality
                     break;
                 default:
@@ -32,7 +43,7 @@ namespace GildedTros.App
             }
 
             // update "sell in"
-            if (item.Name != "B-DAWG Keychain")
+            if (item.Name != ItemNames.BDawgKeychain)
             {
                 item.SellIn -= 1;
             }
