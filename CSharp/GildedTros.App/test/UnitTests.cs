@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Xunit;
 
 namespace GildedTros.App
@@ -50,6 +50,24 @@ namespace GildedTros.App
             TestBeforeAfter(
                 new Item { Name = "B-DAWG Keychain", SellIn = 10, Quality = 80 },
                 new Item { Name = "B-DAWG Keychain", SellIn = 10, Quality = 80 }
+            );
+        }
+
+        [Fact]
+        public void QualityOfGoodWineShouldIncreaseByOneBeforeSellDate()
+        {
+            TestBeforeAfter(
+                new Item { Name = "Good Wine", SellIn = 10, Quality = 10 },
+                new Item { Name = "Good Wine", SellIn = 9, Quality = 11 }
+            );
+        }
+
+        [Fact]
+        public void QualityOfGoodWineShouldIncreaseByTwoAfterSellDate()
+        {
+            TestBeforeAfter(
+                new Item { Name = "Good Wine", SellIn = 0, Quality = 10 },
+                new Item { Name = "Good Wine", SellIn = -1, Quality = 12 }
             );
         }
     }
