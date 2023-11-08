@@ -1,6 +1,6 @@
 ﻿namespace GildedTros.App
 {
-    internal static class ItemNames
+    internal static class ItemName
     {
         internal const string GoodWine = "Good Wine";
         internal const string BackstagePassesForHaxx = "Backstage passes for HAXX";

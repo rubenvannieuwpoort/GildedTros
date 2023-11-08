@@ -8,7 +8,7 @@ namespace GildedTros.App
 
         private static int SellIn(Item item)
         {
-            if (item.Name == ItemNames.BDawgKeychain)
+            if (item.Name == ItemName.BDawgKeychain)
             {
                 return item.SellIn;
             }

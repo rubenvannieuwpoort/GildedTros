@@ -11,10 +11,10 @@
         private static int Quality(Item item) {
             return item.Name switch
             {
-                ItemNames.GoodWine => QualityForGoodWine(item),
-                ItemNames.BackstagePassesForHaxx or ItemNames.BackstagePassesForRefactor => QualityForBackstagePasses(item),
-                ItemNames.DuplicateCode or ItemNames.LongMethods or ItemNames.UglyVariableNames => QualityForSmellyItems(item),
-                ItemNames.BDawgKeychain => QualityForLegendaryItems(item),
+                ItemName.GoodWine => QualityForGoodWine(item),
+                ItemName.BackstagePassesForHaxx or ItemName.BackstagePassesForRefactor => QualityForBackstagePasses(item),
+                ItemName.DuplicateCode or ItemName.LongMethods or ItemName.UglyVariableNames => QualityForSmellyItems(item),
+                ItemName.BDawgKeychain => QualityForLegendaryItems(item),
                 _ => QualityForNormalItem(item),
             };
         }
