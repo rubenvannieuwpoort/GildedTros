@@ -5,7 +5,7 @@ namespace GildedTros.App
 {
     public class UnitTests
     {
-        private void TestBeforeAfter(Item before, Item after)
+        private void ExpectAfterOneDay(Item before, Item after)
         {
             List<Item> items = new List<Item> { before };
             Inventory inventory = new Inventory(items);
@@ -20,7 +20,7 @@ namespace GildedTros.App
         [Fact]
         public void QualityOfNormalItemShouldDecreaseByOneBeforeSellDate()
         {
-            TestBeforeAfter(
+            ExpectAfterOneDay(
                 new Item { Name = "foo", SellIn = 5, Quality = 10 },
                 new Item { Name = "foo", SellIn = 4, Quality = 9 }
             );
@@ -29,7 +29,7 @@ namespace GildedTros.App
         [Fact]
         public void QualityOfNormalItemShouldDecreaseByTwoAfterSellDate()
         {
-            TestBeforeAfter(
+            ExpectAfterOneDay(
                 new Item { Name = "foo", SellIn = 0, Quality = 10 },
                 new Item { Name = "foo", SellIn = -1, Quality = 8 }
             );
@@ -38,7 +38,7 @@ namespace GildedTros.App
         [Fact]
         public void QualityOfNormalItemShouldNotBecomeNegative()
         {
-            TestBeforeAfter(
+            ExpectAfterOneDay(
                 new Item { Name = "foo", SellIn = 0, Quality = 0 },
                 new Item { Name = "foo", SellIn = -1, Quality = 0 }
             );
@@ -47,7 +47,7 @@ namespace GildedTros.App
         [Fact]
         public void QualityAndSellInOfLegendaryItemsShouldNotChange()
         {
-            TestBeforeAfter(
+            ExpectAfterOneDay(
                 new Item { Name = "B-DAWG Keychain", SellIn = 10, Quality = 80 },
                 new Item { Name = "B-DAWG Keychain", SellIn = 10, Quality = 80 }
             );
@@ -56,7 +56,7 @@ namespace GildedTros.App
         [Fact]
         public void QualityOfGoodWineShouldIncreaseByOneBeforeSellDate()
         {
-            TestBeforeAfter(
+            ExpectAfterOneDay(
                 new Item { Name = "Good Wine", SellIn = 10, Quality = 10 },
                 new Item { Name = "Good Wine", SellIn = 9, Quality = 11 }
             );
@@ -65,7 +65,7 @@ namespace GildedTros.App
         [Fact]
         public void QualityOfGoodWineShouldIncreaseByTwoAfterSellDate()
         {
-            TestBeforeAfter(
+            ExpectAfterOneDay(
                 new Item { Name = "Good Wine", SellIn = 0, Quality = 10 },
                 new Item { Name = "Good Wine", SellIn = -1, Quality = 12 }
             );
@@ -74,12 +74,12 @@ namespace GildedTros.App
         [Fact]
         public void QualityOfBackstagePassesShouldBecomeZeroAfterSellDate()
         {
-            TestBeforeAfter(
+            ExpectAfterOneDay(
                 new Item { Name = "Backstage passes for Re:factor", SellIn = 0, Quality = 10 },
                 new Item { Name = "Backstage passes for Re:factor", SellIn = -1, Quality = 0 }
             );
 
-            TestBeforeAfter(
+            ExpectAfterOneDay(
                 new Item { Name = "Backstage passes for HAXX", SellIn = 0, Quality = 10 },
                 new Item { Name = "Backstage passes for HAXX", SellIn = -1, Quality = 0 }
             );
@@ -88,12 +88,12 @@ namespace GildedTros.App
         [Fact]
         public void QualityOfBackstagePassesShouldIncreaseByThreeWhenThereAre5DaysOrLessLeft()
         {
-            TestBeforeAfter(
+            ExpectAfterOneDay(
                 new Item { Name = "Backstage passes for Re:factor", SellIn = 5, Quality = 0 },
                 new Item { Name = "Backstage passes for Re:factor", SellIn = 4, Quality = 3 }
             );
 
-            TestBeforeAfter(
+            ExpectAfterOneDay(
                 new Item { Name = "Backstage passes for HAXX", SellIn = 5, Quality = 0 },
                 new Item { Name = "Backstage passes for HAXX", SellIn = 4, Quality = 3 }
             );
@@ -102,12 +102,12 @@ namespace GildedTros.App
         [Fact]
         public void QualityOfBackstagePassesShouldIncreaseByThreeWhenThereAreMoreThan5ButLessThen11DaysLeft()
         {
-            TestBeforeAfter(
+            ExpectAfterOneDay(
                 new Item { Name = "Backstage passes for Re:factor", SellIn = 10, Quality = 0 },
                 new Item { Name = "Backstage passes for Re:factor", SellIn = 9, Quality = 2 }
             );
 
-            TestBeforeAfter(
+            ExpectAfterOneDay(
                 new Item { Name = "Backstage passes for HAXX", SellIn = 10, Quality = 0 },
                 new Item { Name = "Backstage passes for HAXX", SellIn = 9, Quality = 2 }
             );
@@ -116,12 +116,12 @@ namespace GildedTros.App
         [Fact]
         public void QualityOfBackstagePassesShouldIncreaseByOneWhenThereAreMoreThan10DaysLeft()
         {
-            TestBeforeAfter(
+            ExpectAfterOneDay(
                 new Item { Name = "Backstage passes for Re:factor", SellIn = 11, Quality = 0 },
                 new Item { Name = "Backstage passes for Re:factor", SellIn = 10, Quality = 1 }
             );
 
-            TestBeforeAfter(
+            ExpectAfterOneDay(
                 new Item { Name = "Backstage passes for HAXX", SellIn = 11, Quality = 0 },
                 new Item { Name = "Backstage passes for HAXX", SellIn = 10, Quality = 1 }
             );
@@ -130,12 +130,12 @@ namespace GildedTros.App
         [Fact]
         public void QualityOfBackstagePassesShouldNotBecomeMoreThan50()
         {
-            TestBeforeAfter(
+            ExpectAfterOneDay(
                 new Item { Name = "Backstage passes for Re:factor", SellIn = 5, Quality = 49 },
                 new Item { Name = "Backstage passes for Re:factor", SellIn = 4, Quality = 50 }
             );
 
-            TestBeforeAfter(
+            ExpectAfterOneDay(
                 new Item { Name = "Backstage passes for HAXX", SellIn = 5, Quality = 49 },
                 new Item { Name = "Backstage passes for HAXX", SellIn = 4, Quality = 50 }
             );
@@ -144,17 +144,17 @@ namespace GildedTros.App
         [Fact]
         public void QualityOfCodeSmellsShouldDecreaseByTwoBeforeSellDate()
         {
-            TestBeforeAfter(
+            ExpectAfterOneDay(
                 new Item { Name = "Duplicate Code", SellIn = 5, Quality = 10 },
                 new Item { Name = "Duplicate Code", SellIn = 4, Quality = 8 }
             );
 
-            TestBeforeAfter(
+            ExpectAfterOneDay(
                 new Item { Name = "Long Methods", SellIn = 5, Quality = 10 },
                 new Item { Name = "Long Methods", SellIn = 4, Quality = 8 }
             );
 
-            TestBeforeAfter(
+            ExpectAfterOneDay(
                 new Item { Name = "Ugly Variable Names", SellIn = 5, Quality = 10 },
                 new Item { Name = "Ugly Variable Names", SellIn = 4, Quality = 8 }
             );
@@ -163,17 +163,17 @@ namespace GildedTros.App
         [Fact]
         public void QualityOfCodeSmellsShouldDecreaseByFourAfterSellDate()
         {
-            TestBeforeAfter(
+            ExpectAfterOneDay(
                 new Item { Name = "Duplicate Code", SellIn = 0, Quality = 10 },
                 new Item { Name = "Duplicate Code", SellIn = -1, Quality = 6 }
             );
 
-            TestBeforeAfter(
+            ExpectAfterOneDay(
                 new Item { Name = "Long Methods", SellIn = 0, Quality = 10 },
                 new Item { Name = "Long Methods", SellIn = -1, Quality = 6 }
             );
 
-            TestBeforeAfter(
+            ExpectAfterOneDay(
                 new Item { Name = "Ugly Variable Names", SellIn = 0, Quality = 10 },
                 new Item { Name = "Ugly Variable Names", SellIn = -1, Quality = 6 }
             );
@@ -182,17 +182,17 @@ namespace GildedTros.App
         [Fact]
         public void QualityOfCodeSmellsShouldNotBecomeNegative()
         {
-            TestBeforeAfter(
+            ExpectAfterOneDay(
                 new Item { Name = "Duplicate Code", SellIn = 0, Quality = 3 },
                 new Item { Name = "Duplicate Code", SellIn = -1, Quality = 0 }
             );
 
-            TestBeforeAfter(
+            ExpectAfterOneDay(
                 new Item { Name = "Long Methods", SellIn = 0, Quality = 3 },
                 new Item { Name = "Long Methods", SellIn = -1, Quality = 0 }
             );
 
-            TestBeforeAfter(
+            ExpectAfterOneDay(
                 new Item { Name = "Ugly Variable Names", SellIn = 0, Quality = 3 },
                 new Item { Name = "Ugly Variable Names", SellIn = -1, Quality = 0 }
             );
