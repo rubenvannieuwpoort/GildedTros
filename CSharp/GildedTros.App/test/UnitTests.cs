@@ -48,8 +48,8 @@ namespace GildedTros.App
         public void QualityAndSellInOfLegendaryItemsShouldNotChange()
         {
             ExpectAfterOneDay(
-                new Item { Name = "B-DAWG Keychain", SellIn = 10, Quality = 80 },
-                new Item { Name = "B-DAWG Keychain", SellIn = 10, Quality = 80 }
+                new Item { Name = ItemName.BDawgKeychain, SellIn = 10, Quality = 80 },
+                new Item { Name = ItemName.BDawgKeychain, SellIn = 10, Quality = 80 }
             );
         }
 
@@ -57,8 +57,8 @@ namespace GildedTros.App
         public void QualityOfGoodWineShouldIncreaseByOneBeforeSellDate()
         {
             ExpectAfterOneDay(
-                new Item { Name = "Good Wine", SellIn = 10, Quality = 10 },
-                new Item { Name = "Good Wine", SellIn = 9, Quality = 11 }
+                new Item { Name = ItemName.GoodWine, SellIn = 10, Quality = 10 },
+                new Item { Name = ItemName.GoodWine, SellIn = 9, Quality = 11 }
             );
         }
 
@@ -66,8 +66,8 @@ namespace GildedTros.App
         public void QualityOfGoodWineShouldIncreaseByTwoAfterSellDate()
         {
             ExpectAfterOneDay(
-                new Item { Name = "Good Wine", SellIn = 0, Quality = 10 },
-                new Item { Name = "Good Wine", SellIn = -1, Quality = 12 }
+                new Item { Name = ItemName.GoodWine, SellIn = 0, Quality = 10 },
+                new Item { Name = ItemName.GoodWine, SellIn = -1, Quality = 12 }
             );
         }
 
@@ -75,13 +75,13 @@ namespace GildedTros.App
         public void QualityOfBackstagePassesShouldBecomeZeroAfterSellDate()
         {
             ExpectAfterOneDay(
-                new Item { Name = "Backstage passes for Re:factor", SellIn = 0, Quality = 10 },
-                new Item { Name = "Backstage passes for Re:factor", SellIn = -1, Quality = 0 }
+                new Item { Name = ItemName.BackstagePassesForRefactor, SellIn = 0, Quality = 10 },
+                new Item { Name = ItemName.BackstagePassesForRefactor, SellIn = -1, Quality = 0 }
             );
 
             ExpectAfterOneDay(
-                new Item { Name = "Backstage passes for HAXX", SellIn = 0, Quality = 10 },
-                new Item { Name = "Backstage passes for HAXX", SellIn = -1, Quality = 0 }
+                new Item { Name = ItemName.BackstagePassesForHaxx, SellIn = 0, Quality = 10 },
+                new Item { Name = ItemName.BackstagePassesForHaxx, SellIn = -1, Quality = 0 }
             );
         }
 
@@ -89,13 +89,13 @@ namespace GildedTros.App
         public void QualityOfBackstagePassesShouldIncreaseByThreeWhenThereAre5DaysOrLessLeft()
         {
             ExpectAfterOneDay(
-                new Item { Name = "Backstage passes for Re:factor", SellIn = 5, Quality = 0 },
-                new Item { Name = "Backstage passes for Re:factor", SellIn = 4, Quality = 3 }
+                new Item { Name = ItemName.BackstagePassesForRefactor, SellIn = 5, Quality = 0 },
+                new Item { Name = ItemName.BackstagePassesForRefactor, SellIn = 4, Quality = 3 }
             );
 
             ExpectAfterOneDay(
-                new Item { Name = "Backstage passes for HAXX", SellIn = 5, Quality = 0 },
-                new Item { Name = "Backstage passes for HAXX", SellIn = 4, Quality = 3 }
+                new Item { Name = ItemName.BackstagePassesForHaxx, SellIn = 5, Quality = 0 },
+                new Item { Name = ItemName.BackstagePassesForHaxx, SellIn = 4, Quality = 3 }
             );
         }
 
@@ -103,13 +103,13 @@ namespace GildedTros.App
         public void QualityOfBackstagePassesShouldIncreaseByThreeWhenThereAreMoreThan5ButLessThen11DaysLeft()
         {
             ExpectAfterOneDay(
-                new Item { Name = "Backstage passes for Re:factor", SellIn = 10, Quality = 0 },
-                new Item { Name = "Backstage passes for Re:factor", SellIn = 9, Quality = 2 }
+                new Item { Name = ItemName.BackstagePassesForRefactor, SellIn = 10, Quality = 0 },
+                new Item { Name = ItemName.BackstagePassesForRefactor, SellIn = 9, Quality = 2 }
             );
 
             ExpectAfterOneDay(
-                new Item { Name = "Backstage passes for HAXX", SellIn = 10, Quality = 0 },
-                new Item { Name = "Backstage passes for HAXX", SellIn = 9, Quality = 2 }
+                new Item { Name = ItemName.BackstagePassesForHaxx, SellIn = 10, Quality = 0 },
+                new Item { Name = ItemName.BackstagePassesForHaxx, SellIn = 9, Quality = 2 }
             );
         }
 
@@ -117,13 +117,13 @@ namespace GildedTros.App
         public void QualityOfBackstagePassesShouldIncreaseByOneWhenThereAreMoreThan10DaysLeft()
         {
             ExpectAfterOneDay(
-                new Item { Name = "Backstage passes for Re:factor", SellIn = 11, Quality = 0 },
-                new Item { Name = "Backstage passes for Re:factor", SellIn = 10, Quality = 1 }
+                new Item { Name = ItemName.BackstagePassesForRefactor, SellIn = 11, Quality = 0 },
+                new Item { Name = ItemName.BackstagePassesForRefactor, SellIn = 10, Quality = 1 }
             );
 
             ExpectAfterOneDay(
-                new Item { Name = "Backstage passes for HAXX", SellIn = 11, Quality = 0 },
-                new Item { Name = "Backstage passes for HAXX", SellIn = 10, Quality = 1 }
+                new Item { Name = ItemName.BackstagePassesForHaxx, SellIn = 11, Quality = 0 },
+                new Item { Name = ItemName.BackstagePassesForHaxx, SellIn = 10, Quality = 1 }
             );
         }
 
@@ -131,13 +131,13 @@ namespace GildedTros.App
         public void QualityOfBackstagePassesShouldNotBecomeMoreThan50()
         {
             ExpectAfterOneDay(
-                new Item { Name = "Backstage passes for Re:factor", SellIn = 5, Quality = 49 },
-                new Item { Name = "Backstage passes for Re:factor", SellIn = 4, Quality = 50 }
+                new Item { Name = ItemName.BackstagePassesForRefactor, SellIn = 5, Quality = 49 },
+                new Item { Name = ItemName.BackstagePassesForRefactor, SellIn = 4, Quality = 50 }
             );
 
             ExpectAfterOneDay(
-                new Item { Name = "Backstage passes for HAXX", SellIn = 5, Quality = 49 },
-                new Item { Name = "Backstage passes for HAXX", SellIn = 4, Quality = 50 }
+                new Item { Name = ItemName.BackstagePassesForHaxx, SellIn = 5, Quality = 49 },
+                new Item { Name = ItemName.BackstagePassesForHaxx, SellIn = 4, Quality = 50 }
             );
         }
 
@@ -145,18 +145,18 @@ namespace GildedTros.App
         public void QualityOfCodeSmellsShouldDecreaseByTwoBeforeSellDate()
         {
             ExpectAfterOneDay(
-                new Item { Name = "Duplicate Code", SellIn = 5, Quality = 10 },
-                new Item { Name = "Duplicate Code", SellIn = 4, Quality = 8 }
+                new Item { Name = ItemName.DuplicateCode, SellIn = 5, Quality = 10 },
+                new Item { Name = ItemName.DuplicateCode, SellIn = 4, Quality = 8 }
             );
 
             ExpectAfterOneDay(
-                new Item { Name = "Long Methods", SellIn = 5, Quality = 10 },
-                new Item { Name = "Long Methods", SellIn = 4, Quality = 8 }
+                new Item { Name = ItemName.LongMethods, SellIn = 5, Quality = 10 },
+                new Item { Name = ItemName.LongMethods, SellIn = 4, Quality = 8 }
             );
 
             ExpectAfterOneDay(
-                new Item { Name = "Ugly Variable Names", SellIn = 5, Quality = 10 },
-                new Item { Name = "Ugly Variable Names", SellIn = 4, Quality = 8 }
+                new Item { Name = ItemName.UglyVariableNames, SellIn = 5, Quality = 10 },
+                new Item { Name = ItemName.UglyVariableNames, SellIn = 4, Quality = 8 }
             );
         }
 
@@ -164,18 +164,18 @@ namespace GildedTros.App
         public void QualityOfCodeSmellsShouldDecreaseByFourAfterSellDate()
         {
             ExpectAfterOneDay(
-                new Item { Name = "Duplicate Code", SellIn = 0, Quality = 10 },
-                new Item { Name = "Duplicate Code", SellIn = -1, Quality = 6 }
+                new Item { Name = ItemName.DuplicateCode, SellIn = 0, Quality = 10 },
+                new Item { Name = ItemName.DuplicateCode, SellIn = -1, Quality = 6 }
             );
 
             ExpectAfterOneDay(
-                new Item { Name = "Long Methods", SellIn = 0, Quality = 10 },
-                new Item { Name = "Long Methods", SellIn = -1, Quality = 6 }
+                new Item { Name = ItemName.LongMethods, SellIn = 0, Quality = 10 },
+                new Item { Name = ItemName.LongMethods, SellIn = -1, Quality = 6 }
             );
 
             ExpectAfterOneDay(
-                new Item { Name = "Ugly Variable Names", SellIn = 0, Quality = 10 },
-                new Item { Name = "Ugly Variable Names", SellIn = -1, Quality = 6 }
+                new Item { Name = ItemName.UglyVariableNames, SellIn = 0, Quality = 10 },
+                new Item { Name = ItemName.UglyVariableNames, SellIn = -1, Quality = 6 }
             );
         }
 
@@ -183,18 +183,18 @@ namespace GildedTros.App
         public void QualityOfCodeSmellsShouldNotBecomeNegative()
         {
             ExpectAfterOneDay(
-                new Item { Name = "Duplicate Code", SellIn = 0, Quality = 3 },
-                new Item { Name = "Duplicate Code", SellIn = -1, Quality = 0 }
+                new Item { Name = ItemName.DuplicateCode, SellIn = 0, Quality = 3 },
+                new Item { Name = ItemName.DuplicateCode, SellIn = -1, Quality = 0 }
             );
 
             ExpectAfterOneDay(
-                new Item { Name = "Long Methods", SellIn = 0, Quality = 3 },
-                new Item { Name = "Long Methods", SellIn = -1, Quality = 0 }
+                new Item { Name = ItemName.LongMethods, SellIn = 0, Quality = 3 },
+                new Item { Name = ItemName.LongMethods, SellIn = -1, Quality = 0 }
             );
 
             ExpectAfterOneDay(
-                new Item { Name = "Ugly Variable Names", SellIn = 0, Quality = 3 },
-                new Item { Name = "Ugly Variable Names", SellIn = -1, Quality = 0 }
+                new Item { Name = ItemName.UglyVariableNames, SellIn = 0, Quality = 3 },
+                new Item { Name = ItemName.UglyVariableNames, SellIn = -1, Quality = 0 }
             );
         }
     }
