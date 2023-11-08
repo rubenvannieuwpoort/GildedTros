@@ -1,4 +1,6 @@
-﻿namespace GildedTros.App
+﻿using System;
+
+namespace GildedTros.App
 {
     internal static class ItemNames
     {
@@ -49,7 +51,7 @@
 
         private static void UpdateQualityForGoodWine(ref Item item)
         {
-            item.Quality = Clamp(item.Quality + QualityChange(item));
+            item.Quality = Math.Clamp(item.Quality + QualityChange(item), MinQuality, MaxQuality);
         }
 
         private static void UpdateQualityForBackstagePasses(ref Item item)
@@ -62,45 +64,32 @@
             {
                 if (item.SellIn <= 5)
                 {
-                    item.Quality = Clamp(item.Quality + 3);
+                    item.Quality = Math.Clamp(item.Quality + 3, MinQuality, MaxQuality);
                 }
                 else if (item.SellIn <= 10)
                 {
-                    item.Quality = Clamp(item.Quality + 2);
+                    item.Quality = Math.Clamp(item.Quality + 2, MinQuality, MaxQuality);
                 }
                 else
                 {
-                    item.Quality = Clamp(item.Quality + 1);
+                    item.Quality = Math.Clamp(item.Quality + 1, MinQuality, MaxQuality);
                 }
             }
         }
 
         private static void UpdateQualityForSmellyItems(ref Item item)
         {
-            item.Quality = Clamp(item.Quality - 2 * QualityChange(item));
+            item.Quality = Math.Clamp(item.Quality - 2 * QualityChange(item), MinQuality, MaxQuality);
         }
 
         private static void UpdateQualityForNormalItem(ref Item item)
         {
-            item.Quality = Clamp(item.Quality - QualityChange(item));
+            item.Quality = Math.Clamp(item.Quality - QualityChange(item), MinQuality, MaxQuality);
         }
 
         private static int QualityChange(Item item)
         {
             return item.SellIn > 0 ? 1 : 2;
-        }
-
-        private static int Clamp(int quality)
-        {
-            if (quality < MinQuality)
-            {
-                return MinQuality;
-            }
-            if (quality > MaxQuality)
-            {
-                return MaxQuality;
-            }
-            return quality;
         }
     }
 }
