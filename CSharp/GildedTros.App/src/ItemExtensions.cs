@@ -47,13 +47,12 @@
             }
         }
 
-
-        static void UpdateQualityForGoodWine(ref Item item)
+        private static void UpdateQualityForGoodWine(ref Item item)
         {
             item.Quality = Clamp(item.Quality + Decay(item));
         }
 
-        static void UpdateQualityForBackstagePasses(ref Item item)
+        private static void UpdateQualityForBackstagePasses(ref Item item)
         {
             if (item.SellIn <= 0)
             {
@@ -76,17 +75,17 @@
             }
         }
 
-        static void UpdateQualityForSmellyItems(ref Item item)
+        private static void UpdateQualityForSmellyItems(ref Item item)
         {
             item.Quality = Clamp(item.Quality - 2 * Decay(item));
         }
 
-        static void UpdateQualityForNormalItem(ref Item item)
+        private static void UpdateQualityForNormalItem(ref Item item)
         {
             item.Quality = Clamp(item.Quality - Decay(item));
         }
 
-        static int Decay(Item item)
+        private static int Decay(Item item)
         {
             return item.SellIn > 0 ? 1 : 2;
         }
