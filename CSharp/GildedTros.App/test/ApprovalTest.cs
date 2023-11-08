@@ -13,13 +13,12 @@ namespace GildedTros.App
         [Fact]
         public void ThirtyDays()
         {
-            var fakeoutput = new StringBuilder();
-            Console.SetOut(new StringWriter(fakeoutput));
-            Console.SetIn(new StringReader("a\n"));
+            var outputStringBuilder = new StringBuilder();
+            Console.SetOut(new StringWriter(outputStringBuilder));
 
             Program.Main(new string[] { });
-            var output = fakeoutput.ToString();
 
+            var output = outputStringBuilder.ToString();
             Approvals.Verify(output);
         }
     }
