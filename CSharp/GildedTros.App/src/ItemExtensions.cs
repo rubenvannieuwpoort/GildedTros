@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace GildedTros.App
+﻿namespace GildedTros.App
 {
     internal static class ItemNames
     {
@@ -24,7 +22,6 @@ namespace GildedTros.App
         }
 
         private static void UpdateQuality(ref Item item) {
-            // update quality
             switch (item.Name)
             {
                 case ItemNames.GoodWine:
