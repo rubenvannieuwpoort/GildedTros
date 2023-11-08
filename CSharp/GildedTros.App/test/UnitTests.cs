@@ -5,7 +5,7 @@ namespace GildedTros.App
 {
     public class UnitTests
     {
-        public void TestBeforeAfter(Item before, Item after)
+        private void TestBeforeAfter(Item before, Item after)
         {
             List<Item> items = new List<Item> { before };
             Inventory inventory = new Inventory(items);
