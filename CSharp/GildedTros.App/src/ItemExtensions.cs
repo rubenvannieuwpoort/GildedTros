@@ -62,18 +62,20 @@ namespace GildedTros.App
             }
             else
             {
+                int qualityChange;
                 if (item.SellIn <= 5)
                 {
-                    item.Quality = Math.Clamp(item.Quality + 3, MinQuality, MaxQuality);
+                    qualityChange = 3;
                 }
                 else if (item.SellIn <= 10)
                 {
-                    item.Quality = Math.Clamp(item.Quality + 2, MinQuality, MaxQuality);
+                    qualityChange = 2;
                 }
                 else
                 {
-                    item.Quality = Math.Clamp(item.Quality + 1, MinQuality, MaxQuality);
+                    qualityChange = 1;
                 }
+                item.Quality = Math.Clamp(item.Quality + qualityChange, MinQuality, MaxQuality);
             }
         }
 
