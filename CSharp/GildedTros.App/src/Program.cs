@@ -7,6 +7,8 @@ namespace GildedTros.App
     {
         public static void Main(string[] args)
         {
+            const int days = 30;
+
             IList<Item> Items = new List<Item>{
                 new Item {Name = "Ring of Cleansening Code", SellIn = 10, Quality = 20},
                 new Item {Name = "Good Wine", SellIn = 2, Quality = 0},
@@ -23,7 +25,7 @@ namespace GildedTros.App
 
             var inventory = new Inventory(Items);
 
-            for (var i = 0; i < 31; i++)
+            for (var i = 0; i <= days; i++)
             {
                 Console.WriteLine("-------- day " + i + " --------");
                 Console.WriteLine("name, sellIn, quality");
