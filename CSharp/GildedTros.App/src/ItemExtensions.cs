@@ -49,7 +49,7 @@
 
         private static void UpdateQualityForGoodWine(ref Item item)
         {
-            item.Quality = Clamp(item.Quality + Decay(item));
+            item.Quality = Clamp(item.Quality + QualityChange(item));
         }
 
         private static void UpdateQualityForBackstagePasses(ref Item item)
@@ -77,15 +77,15 @@
 
         private static void UpdateQualityForSmellyItems(ref Item item)
         {
-            item.Quality = Clamp(item.Quality - 2 * Decay(item));
+            item.Quality = Clamp(item.Quality - 2 * QualityChange(item));
         }
 
         private static void UpdateQualityForNormalItem(ref Item item)
         {
-            item.Quality = Clamp(item.Quality - Decay(item));
+            item.Quality = Clamp(item.Quality - QualityChange(item));
         }
 
-        private static int Decay(Item item)
+        private static int QualityChange(Item item)
         {
             return item.SellIn > 0 ? 1 : 2;
         }
